@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Booking</title>
+</head>
+<body>
+<h1>Add Booking</h1>
+<form th:action="@{/bookings/add}" th:object="${booking}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label for="passengerName">Passenger Name:</label>
+    <input type="text" th:field="*{passengerName}" id="passengerName" />
+    <label for="flight">Flight:</label>
+    <select th:field="*{flightId}" id="flight">
+        <option th:each="flight : ${flights}" th:value="${flight.id}" th:text="${flight.flightNumber}">FL123</option>
+    </select>
+    <button type="submit">Save</button>
+</form>
+<a th:href="@{/bookings}">Back to Bookings</a>
+</body>
+</html>

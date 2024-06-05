@@ -1,0 +1,11 @@
+**FlightBookingApp**
+
+This example has few class with below functionality explained:
+
+Configuration class (WebConfig) is used to register a custom converter (StringToFlightConverter) that converts String values to Flight objects. This is useful in a Spring MVC application where you might need to convert request parameters or form inputs to complex objects automatically. By adding this converter to the FormatterRegistry, Spring will automatically use it whenever necessary during the data binding process.
+
+The BookingController class is a Spring MVC controller that provides endpoints to list all bookings, display a form to add a new booking, add a new booking, and delete an existing booking. It uses the BookingService and FlightService to perform the necessary business logic and data operations, and it returns the names of Thymeleaf templates to be rendered as views. The use of annotations like @Controller, @RequestMapping, @GetMapping, and @PostMapping helps map HTTP requests to specific methods in the controller.
+
+The FlightController class is a Spring MVC controller that provides endpoints to list all flights, display forms to add or edit a flight, add a new flight, edit an existing flight, and delete a flight. It uses the FlightService to perform the necessary business logic and data operations, and it returns the names of Thymeleaf templates to be rendered as views. The use of annotations like @Controller, @RequestMapping, @GetMapping, @PostMapping, and @PathVariable helps map HTTP requests to specific methods in the controller.
+
+The StringToFlightConverter class is a custom converter that converts a String into a Flight object. It is annotated with @Component to be managed by Spring and implements the Converter<String, Flight> interface. It uses the FlightService to fetch the Flight object by its ID, handling any potential NumberFormatException by returning null. This converter can be particularly useful in a Spring MVC application for converting request parameters or form inputs directly into Flight objects.
